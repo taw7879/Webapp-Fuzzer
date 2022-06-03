@@ -18,7 +18,7 @@ while True:
             parameter += chr(j)
 
         print("\nSending random string of length " + str(length) + " to BodgeIt Store...")
-        pload = {'username':parameter,'password':'password', 'Login':'Login'}
+        pload = {'username':parameter,'password':'password'}
         r = requests.post("http://127.0.0.1:8080/bodgeit/login.jsp", data=pload)
         print("\nMessage successfully sent..\n")
         time.sleep(1)
@@ -37,7 +37,8 @@ while True:
         #command = commands[len(commands)-1]
         
         print("\nSending \"" + command + "\"" + " to BodgeIt Store...")
-        r = requests.post("http://127.0.0.1:8080/bodgeit/login.jsp", data=command)
+        pload = {'username':command,'password':'password', 'Login':'Login'}
+        r = requests.post("http://127.0.0.1:8080/bodgeit/login.jsp", data=pload)
         print("\nCommand successfully sent..\n")
         time.sleep(1)
         
