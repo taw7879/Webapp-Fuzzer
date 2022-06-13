@@ -20,7 +20,11 @@ while True:
         print("\nSending random string of length " + str(length) + " to BodgeIt Store...")
         pload = {'username':parameter,'password':'password'}
         r = requests.post("http://127.0.0.1:8080/bodgeit/login.jsp", data=pload)
-        print("\nMessage successfully sent..\n")
+        
+        if r.status_code >= 400:
+                print("\nMessage unsuccessfully sent..\n")
+        else:
+            print("\nMessage successfully sent..\n")
         time.sleep(1)
 
         print("Server response:\n" + r.text)
@@ -39,7 +43,11 @@ while True:
         print("\nSending \"" + command + "\"" + " to BodgeIt Store...")
         pload = {'username':command,'password':'password', 'Login':'Login'}
         r = requests.post("http://127.0.0.1:8080/bodgeit/login.jsp", data=pload)
-        print("\nCommand successfully sent..\n")
+        
+        if r.status_code >= 400:
+                print("\nCommand unsuccessfully sent..\n")
+        else:
+            print("\nMessage successfully sent..\n")
         time.sleep(1)
         
         print("Server response:\n" + r.text)
